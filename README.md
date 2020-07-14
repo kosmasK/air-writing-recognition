@@ -1,28 +1,27 @@
-## air-writing-recognition
+# air-writing-recognition
 Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)
 
-## Experiment 1
+# Experiment 1
 
 
-## Experiment 2
+# Experiment 2 (participant cross-validation)
 
-# cross-validation
 
-# train distinct models
+## train distinct models
 
 ```
 cd exp2
 python air_test.py --model {cnn, cnn-lstm, lstm, tcn_dynamic}
 ```
 
-# train fuzzy models
+## train fuzzy models
 
 ```
 cd exp2\fuzzy_LSTMWithCNN
 python air_test.py
 ```
 
-# fine-tuning CNN and LSTM on Participants #5 and #8
+## fine-tuning CNN and LSTM on Participants #5 and #8
 ```
 python air_test.py --model cnn --run_all_folds False --Nf 5 --n_injections 2 --epochs 20
 python air_test.py --model cnn --run_all_folds False --Nf 5 --n_injections 5 --epochs 20
