@@ -1,10 +1,10 @@
-# # air-writing-recognition
+## air-writing-recognition
 Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)
 
-# # Experiment 1
+## Experiment 1
 
 
-# # Experiment 2
+## Experiment 2
 
 # cross-validation
 
