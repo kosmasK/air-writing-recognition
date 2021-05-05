@@ -4,9 +4,12 @@ import torch.optim as optim
 import torch.nn.functional as F
 import sys
 sys.path.append("../../")
-from TCN.cnn_static_writing.model import ConvNet
-from TCN.cnn_static_writing.myutils import FrameLevelDataset, data_generator
-from TCN.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
+# from TCN.cnn_static_writing.model import ConvNet
+# from TCN.cnn_static_writing.myutils import FrameLevelDataset, data_generator
+from model import ConvNet
+from myutils import FrameLevelDataset, data_generator
+
+from exp1.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
 import matplotlib.pyplot as plt 
 import numpy as np
 import argparse

@@ -236,9 +236,10 @@ if __name__ == "__main__":
 
 	# Dirs to store results
 	try:
+		os.mkdir('../models/')
 		os.mkdir(args.model_dir)
 	except:
-		print('No new model_dir was created. '+args.model_dir+'probably already exists.')
+		print('No new model_dir was created. '+args.model_dir+' probably already exists.')
 
 
 	try:
