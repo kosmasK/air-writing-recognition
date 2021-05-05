@@ -1,9 +1,7 @@
 import torch.nn.functional as F
 from torch import nn
 import sys
-sys.path.append("/home/gbastas/Downloads/TCN-master/")
-# sys.path.append("../../")
-from TCN.tcn import TemporalConvNet
+from exp1.tcn import TemporalConvNet
 
 
 # class TCN(nn.Module):
@@ -22,7 +20,7 @@ from TCN.tcn import TemporalConvNet
 
 # Convolutional neural network (two convolutional layers)
 import torch.nn.functional as F
-class ConvNet(nn.Module):
+class ConvNet(nn.Module)
 	def __init__(self, input_dim, output_dim, num_classes=10, dropout=0.0, device='cuda'):
 		super(ConvNet, self).__init__()
 		self.layer1 = nn.Sequential(
