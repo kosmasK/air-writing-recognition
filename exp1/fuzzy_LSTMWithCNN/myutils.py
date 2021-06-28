@@ -6,7 +6,7 @@ import torch.nn as nn
 from torchvision import datasets, transforms
 import csv
 import random 
-from TCN.tools import coorToImg, do_the_scaling
+from exp1.tools import coorToImg, do_the_scaling
 from skimage.transform import rescale
 
 

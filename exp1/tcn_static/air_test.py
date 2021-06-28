@@ -5,9 +5,9 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt 
 import sys
 sys.path.append("../../")
-from TCN.air_static_writing.model import TCN
-from TCN.air_static_writing.myutils import FrameLevelDataset, data_generator
-from TCN.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, coorToImg, do_the_scaling, str2bool
+from model import TCN
+from myutils import FrameLevelDataset, data_generator
+from exp1.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, coorToImg, do_the_scaling, str2bool
 import numpy as np
 import argparse
 from math import exp
@@ -123,12 +123,6 @@ def eval(eval_loader, name='Validation'):
 			cols = pred.data.view_as(target).cpu().numpy()
 			for c, (i,j) in enumerate(zip(rows, cols)):
 				cm[i,j] +=1
-				# if i!=j:
-				# 	fimg = coorToImg(data[c].cpu().numpy())	
-				# 	FImgs += [fimg]
-				# 	Pairs += [(i, j)]
-				# 	Confidence += [exp(maxim[c].item())]
-
 
 		eval_loss /= len(eval_loader.dataset)
 		# print(name, 'SET: Epoch:', epoch)
@@ -169,13 +163,9 @@ if __name__ == "__main__":
 			train_loss = train(epoch)
 			train_losses.append(train_loss)
 
-			# val_loss, val_acc, cm, FImgs, Pairs, Confidence = eval(train_loader, name='Train')
-
-
 			val_loss, val_acc, cm, FImgs, Pairs, Confidence = eval(val_loader, name='Valid')
 			val_losses.append(val_loss)
 			val_scores.append(val_acc)	
-			# print(type(val_loss))
 
 			print("************ Test ************")
 			test_loss, test_acc, _, _, _, _ = eval(test_loader, name='Test')
@@ -185,13 +175,9 @@ if __name__ == "__main__":
 
 			# Get Best Confusion Matrix
 			if val_acc>maximum:
-			# if (val_loss < min_loss):
 				maximum=test_acc
 				min_loss = val_loss	
 				best_epoch = epoch
-				# best_cm = cm
-				# best_FImgs = FImgs
-				# best_Pairs = Pairs
 				with open(model_name, "wb") as f:
 					torch.save(model, f)
 
@@ -215,8 +201,6 @@ if __name__ == "__main__":
 	# Plot mismatched samples
 	plt.clf()
 	for pair, img, conf in zip(Pairs, FImgs, Confidence):
-		# plt.title("True Label: " + str(pair[0]) + "     Predicted:" + str(pair[1]) + "     Confidence:" + str(round(conf,3)))
 		plt.axis('off')
 		plt.imshow(img[:,::-1].T, cmap="gray")
 		plt.savefig(imgs+'mismatched_examples/'+'t'+ str(pair[0]) +'p'+ str(pair[1])+'.png')
-		# plt.show()

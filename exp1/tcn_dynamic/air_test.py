@@ -5,9 +5,12 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt 
 import sys
 sys.path.append("../../")
-from TCN.air_writing.model import TCN
-from TCN.air_writing.myutils import FrameLevelDataset, data_generator
-from TCN.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
+# from TCN.air_writing.model import TCN
+# from TCN.air_writing.myutils import FrameLevelDataset, data_generator
+# from TCN.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
+from model import TCN
+from myutils import FrameLevelDataset, data_generator
+from exp1.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
 import numpy as np
 import argparse
 from math import exp
@@ -40,7 +43,7 @@ parser.add_argument('--nhid', type=int, default=25,
 					help='number of hidden units per layer (default: 25)')
 parser.add_argument('--seed', type=int, default=1111,
 					help='random seed (default: 1111)')
-parser.add_argument('--featrep', type=str, default='rescale',
+parser.add_argument('--featrep', type=str, default='zeropad',
 					help="'rescale', 'zeropad', 'identical'")
 parser.add_argument('--train', type=str2bool, default=True)
 
@@ -158,13 +161,11 @@ def eval(eval_loader, name='Validation'):
 					Confidence += [exp(maxim[c].item())]
 
 		eval_loss /= len(eval_loader.dataset)
-		# print(name, 'SET: Epoch:', epoch)
 		print('Average loss: {:.4f}, Accuracy: {}/{} ({:.1f}%)\n'.format(			
 			eval_loss, correct, len(eval_loader.dataset),
 			100. * correct / len(eval_loader.dataset)))
 
 		eval_acc = 100. * correct / len(eval_loader.dataset)
-		# print(len(eval_loader.dataset))
 
 		return eval_loss, eval_acc, cm, FImgs, Pairs, Confidence
 
@@ -242,8 +243,6 @@ if __name__ == "__main__":
 	# Plot mismatched samples
 	plt.clf()
 	for pair, img, conf in zip(Pairs, FImgs, Confidence):
-		# plt.title("True Label: " + str(pair[0]) + "     Predicted:" + str(pair[1]) + "     Confidence:" + str(round(conf,3)))
 		plt.axis('off')
 		plt.imshow(img[:,::-1].T, cmap="gray")
 		plt.savefig(imgs+'mismatched_examples/'+'t'+ str(pair[0]) +'p'+ str(pair[1])+'.png')
-		# plt.show()

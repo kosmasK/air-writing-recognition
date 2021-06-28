@@ -2,10 +2,10 @@ import torch.nn.functional as F
 from torch import nn
 import sys
 from exp1.tcn import TemporalConvNet
+import torch.nn.functional as F
 
 # Convolutional neural network (two convolutional layers)
-import torch.nn.functional as F
-class ConvNet(nn.Module)
+class ConvNet(nn.Module):
 	def __init__(self, input_dim, output_dim, num_classes=10, dropout=0.0, device='cuda'):
 		super(ConvNet, self).__init__()
 		self.layer1 = nn.Sequential(

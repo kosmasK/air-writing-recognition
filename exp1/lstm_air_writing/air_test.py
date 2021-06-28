@@ -5,9 +5,9 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt 
 import sys
 sys.path.append("../../")
-from TCN.lstm_air_writing.model import LSTM
-from TCN.lstm_air_writing.myutils import FrameLevelDataset, data_generator
-from TCN.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
+from model import LSTM
+from myutils import FrameLevelDataset, data_generator
+from exp1.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
 import numpy as np
 import argparse
 import torch.nn as nn

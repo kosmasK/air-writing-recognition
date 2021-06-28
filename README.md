@@ -6,6 +6,17 @@ Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Ar
 cd exp1/cnn_static_writing
 python air_test.py {--train False}
 
+cd exp1/lstm_air_writing
+python air_test.py {--use_cnn False} {--bidirectional True} {--train False}
+
+cd exp1/tcn_dynamic
+python air_test.py {--train False}
+
+cd exp1/tcn_static
+python air_test.py {--train False}
+
+cd exp1/fuzzy_LSTMWithCNN
+python air_test.py {--train False}
 
 # Experiment 2 (participant cross-validation)
 

@@ -1,14 +1,12 @@
 import torch.nn.functional as F
 from torch import nn
 import sys
-sys.path.append("/home/gbastas/Downloads/TCN-master/")
 import torch
 
 class LSTM(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim, num_layers, dropout=0.0, bidirectional=False, use_cnn=True, featrep='rescale'):
         super(LSTM, self).__init__()
-        # self.packing = packing
-        # self.device = device
+
         self.featrep = featrep
         self.bidirectional = bidirectional
         self.use_cnn = use_cnn
@@ -28,7 +26,6 @@ class LSTM(nn.Module):
             self.lstm = nn.LSTM(input_dim, hidden_dim, num_layers, dropout=dropout, batch_first=True)
             
         self.fc = nn.Linear(hidden_dim, output_dim)
-        #         self.fc2 = nn.Linear(hidden_dim, output_dim)
         
         self.softmax = nn.LogSoftmax()
         
@@ -45,33 +42,12 @@ class LSTM(nn.Module):
         hidden = self.init_hidden(batch_size)
         # TODO: what if featrep == rescale ()
         if self.use_cnn: # In case we use cnn
-            # print(x.shape)
-            # x = x.transpose(1,2) # Turn (batch_size x seq_len x input_size) into (batch_size x input_size x seq_len) for CNN 
             c = self.c1(x)
-            # print(x[0, 0, lengths[0]-1])
-            # print(c[0, 0, lengths[0]-5:])
-            # print(x.shape)
-            # print(c.shape)
             lengths = lengths-1
-            # lengths = lengths/2
-            # p = self.p1(c)
-            # print(p.shape)
-            # aaa
-            ######################### TODO
-            # p = self.last_timestep(p, lengths)
-            ########################
-            # p = p.transpose(1, 2) # Turn (batch_size x hidden_size x seq_len) back into (batch_size x seq_len x hidden_size) for LSTM
-            # print(lengths)
-            # lengths = torch.tensor( [p.size(1)]*batch_size )  # constant length(=p.size(1)=hidden_size) for all the mel-specs of our batch 
-            # print(lengths)
-            # aaa
-            # lstm_out, hidden = self.lstm(p, hidden) 
+
             lstm_out, hidden = self.lstm(c.transpose(1,2), hidden) 
         else:
             lstm_out, hidden = self.lstm(x.transpose(1,2), hidden) # remember that: batch_first=True (check init_hidden). Also, lstm_out.size() = x = (batch_size x seq_len x hidden_size)
-            
-        # if self.packing:
-        #     lstm_out, _ = torch.nn.utils.rnn.pad_packed_sequence(lstm_out, batch_first=True)
 
         if self.featrep == 'zeropad':
             lstm_out = self.last_timestep(lstm_out, lengths)  
@@ -79,9 +55,7 @@ class LSTM(nn.Module):
             lstm_out = lstm_out[:,-1,:]
 
         fc_outputs = self.fc(lstm_out)      
-
         last_outputs = self.softmax(fc_outputs)
-
         return last_outputs
 
     def last_timestep(self, outputs, lengths):

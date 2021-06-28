@@ -4,9 +4,9 @@ import torch.optim as optim
 import torch.nn.functional as F
 import sys
 sys.path.append("../../")
-from TCN.fuzzy_LSTMWithCNN.model import FUZZY
-from TCN.fuzzy_LSTMWithCNN.myutils import FrameLevelDataset, data_generator
-from TCN.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
+from model import FUZZY
+from myutils import FrameLevelDataset, data_generator
+from exp1.tools import plot_learning_curve, plot_accs, plot_confusion_matrix, str2bool
 import matplotlib.pyplot as plt 
 import numpy as np
 import argparse

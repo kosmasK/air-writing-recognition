@@ -1,9 +1,8 @@
 import torch.nn.functional as F
 from torch import nn
 import sys
-sys.path.append("/home/gbastas/Downloads/TCN-master/")
-# sys.path.append("../../")
-from TCN.tcn import TemporalConvNet
+sys.path.append("../../")
+from exp1.tcn import TemporalConvNet
 
 
 class TCN(nn.Module):
