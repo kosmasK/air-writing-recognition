@@ -51,7 +51,7 @@ python air_test.py --model lstm --run_all_folds False --Nf 8 --n_injections 2 --
 python air_test.py --model lstm --run_all_folds False --Nf 8 --n_injections 5 --epochs 200
 ```
 
-## DEMO
+## Demo
 https://apps.ilsp.gr:5006/
 
 You must plug in a Leap Motion Controller and have the proper drivers installed in order to use the air-writing environment. Place the sensor on the table, in front of and parallel to your computer monitor. Move your index finger right above the sensor and start drawing digits in free space.
