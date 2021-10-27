@@ -1,5 +1,5 @@
 # air-writing-recognition
-[Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)](https://ieeexplore.ieee.org/abstract/document/9257775)
+This is the code for the experiments presented in the article [Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)](https://ieeexplore.ieee.org/abstract/document/9257775)
 
 # Experiment 1
 
@@ -52,4 +52,11 @@ python air_test.py --model lstm --run_all_folds False --Nf 8 --n_injections 5 --
 ```
 
 ## DEMO
-https://apps.ilsp.gr:5006/airwriting/
+You must plug in a Leap Motion Controller and have the proper drivers installed in order to use the air-writing environment. Place the sensor on the table, in front of and parallel to your computer monitor. Move your index finger right above the sensor and start drawing digits in free space.
+
+<p align="center">
+    <img src="airwr_vid2c.gif" width="400">
+</p>
+
+
+https://apps.ilsp.gr:5006/
