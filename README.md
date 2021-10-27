@@ -52,4 +52,4 @@ python air_test.py --model lstm --run_all_folds False --Nf 8 --n_injections 5 --
 ```
 
 ## DEMO
-https://apps.ilsp.gr:5006/
+https://apps.ilsp.gr:5006/airwriting/
