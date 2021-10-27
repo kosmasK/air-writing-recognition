@@ -1,5 +1,5 @@
 # air-writing-recognition
-This is the code for the experiments presented in the article [Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)](https://ieeexplore.ieee.org/abstract/document/9257775)
+This is the code for the experiments presented in the article [Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR 2020)](https://ieeexplore.ieee.org/abstract/document/9257775).
 
 # Experiment 1
 
