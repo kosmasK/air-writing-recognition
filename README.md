@@ -1,5 +1,5 @@
 # air-writing-recognition
-Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)
+[Air-Writing Recognition using Deep Convolutional and Recurrent Neural Network Architectures - International Conference on Frontiers of Handwriting Recognition (ICFHR)](https://ieeexplore.ieee.org/abstract/document/9257775)
 
 # Experiment 1
 
@@ -50,3 +50,6 @@ python air_test.py --model lstm --run_all_folds False --Nf 5 --n_injections 5 --
 python air_test.py --model lstm --run_all_folds False --Nf 8 --n_injections 2 --epochs 200
 python air_test.py --model lstm --run_all_folds False --Nf 8 --n_injections 5 --epochs 200
 ```
+
+## DEMO
+https://apps.ilsp.gr:5006/
